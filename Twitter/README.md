@@ -1,9 +1,5 @@
 
 
-# facebook_Client_RabbitMq
-
-
-
 ## Usage
 
 
