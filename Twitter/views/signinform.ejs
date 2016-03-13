@@ -1,0 +1,45 @@
+<html>
+
+  <head>
+  
+    <title>Login</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script> 
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    	<link rel="stylesheet"
+    		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet"
+    	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    </head>	
+  <body>
+  <div class="headerSignup"></div>
+  <form action = "/afterSignIn" method="post">
+  <div id = "signInDiv" style="border-size:20px;border-style:solid;border-width:thin;border-color:black;display:block;height:400px;width: 1000px">
+   
+  <h3>Log in to Twitter</h1>
+ 
+  <input type = "email" placeholder="Email" name = "fullnameLogin" data-ng-model = "fullnameLogin" class="form-control input-lg" style="width:400px" required>
+  <br/>
+  <br/>
+  
+  <input type = "password" placeholder="Password" data-ng-model = "passwordLogin" class="form-control input-lg" name ="passwordLogin" style="width:400px" required>
+  <br/>
+  <br/>
+  
+ <!-- 	<div class="col-md-12" style="margin: 10px;">
+	<div class="alert alert-danger" ng-hide="invalid_login"> 
+	<strong>Incorrect username or password</strong>
+	</div>
+	<div class="alert alert-danger" ng-hide="unexpected_error">
+	<strong>Unexpected error, try again</strong>
+	</div> -->
+  <input type="submit" value="Sign In" class="btn btn-lg" style="background-color:#3399ff","color:white"/>
+	  </fieldset>
+
+</div>
+</form>
+
+ </body>
+ 
+</html>

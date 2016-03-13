@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Successful Login</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script> 
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    	<link rel="stylesheet"
+    		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet"
+    	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  </head>
+  <body>
+  <div class="headerSignup"></div>
+
+  <div id="signupsuccess" align = "center">
+  <form action="/redirecToLogin" method="get" class="redirecToLogin">
+
+  <h1>Welcome
+  <%=fullname%>,
+  </h1>
+    <h2>You are successfully registered in twitter.<br/>
+    Please click here to login</h2>
+    <input type="submit" value="Log In" class="btn btn-lg"/>
+
+	</div>
+  </body>
+</html>
