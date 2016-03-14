@@ -3,6 +3,7 @@ var express = require('express');
 var crypto = require('crypto');
 var bodyParser = require('body-parser');
 var mysql = require('./mysql');
+var session = require('client-sessions');
 
 var session;
 function sign_in(req,res) {
@@ -62,9 +63,14 @@ function afterSignUp(req , res) {
 	{
 		console.log(fullname+" "+email+" "+password);
 					//Assigning the session
+	var encryptedPassword = crypto
+    .createHash("md5")
+    .update(password)
+	.digest('hex');
+	//console.log(encryptedPassword + "^^^^^^^^^encrypted password");
+	
 		var twitter_handle = '@' + fullname;
-		var post  = {twitter_handle : twitter_handle, name : fullname, password : password, emailid : email};
-		var query = "insert into tbl_users(tweeter_handle,fullname, password, emailid)VALUES ('"+ twitter_handle + "','" + fullname + "','" +password+ "','" +email+"')";	
+		var query = "insert into tbl_users(tweeter_handle,fullname, password, emailid)VALUES ('"+ twitter_handle + "','" + fullname + "','" +encryptedPassword+ "','" +email+"')";	
 		mysql.insertData(function(err,results){
 			if(err){
 				throw err;
@@ -110,40 +116,15 @@ exports.redirecToLogin = function(req,res)
 		res.render("signinform.ejs");
 
 };
-	
-//	if (fullname === null || password === null || phoneOrEmail === null)
-//		{
-//			res.send("Failure");
-//		}
-//	else
-//		{
-//		//console.log(fullname + " " + password + "*************");
-//		res.send("Success");
-////		var hash = crypto
-////	     .createHash("md5")
-////	     .update(req.body.pass)
-////	     .digest('hex');
-////
-////		console.log(hash);
-//		var twitter_handle = '@' + fullname;
-//		var post  = {twitter_handle : twitter_handle, name : fullname, password : password, emailid : phoneOrEmail};
-//		
-//		
-//			var query = "insert into tbl_users(name, password, email)VALUES ("+ fullname + "," +password+ "," +phoneOrEmail+")";	
-//			
-//			
-//		}
-	
-
 
 
 function afterSignIn(req , res) {
 var emailid = req.param("fullnameLogin");
 var password = req.param("passwordLogin");
 var json_responses;
-var getUser="select * from tbl_users where emailid='"+emailid+"' and password='" + password +"'";
+var loginResults;
+var getUser="select * from tbl_users";
 console.log("Query is:"+getUser);
-
 mysql.fetchData(function(err,results){
 	if(err){
 		throw err;
@@ -151,9 +132,29 @@ mysql.fetchData(function(err,results){
 	else 
 	{
 		if(results.length > 0){
-			console.log("valid Login");
-			ejs.renderFile('./views/success_login.ejs', { data: results } , function(err, result) {
-		        // render on success
+			var jsonString = JSON.stringify(results);
+			var jsonParse = JSON.parse(jsonString);
+			console.log(results[0].emailid +"!!!!!!!!!!!!");
+			for(var i=0;i< results.length; i++)
+			{
+			if(results[i].emailid === emailid)
+			{
+				var encryptedPassword = crypto
+			    .createHash("md5")
+			    .update(password)
+				.digest('hex');
+					if(results[i].password==encryptedPassword)
+				{
+					console.log("in log in user");
+					console.log("valid Login");
+					req.session.fullname=results[i].fullname;
+					console.log(req.session.fullname);
+				}
+			}
+			}
+				ejs.renderFile('./views/success_login.ejs', { data: results, session: req.session.fullname } , function(err, result) {
+						
+						// render on success
 		        if (!err) {
 		            res.end(result);
 
