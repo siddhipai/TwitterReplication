@@ -1,0 +1,46 @@
+.header{
+  width : 100%;
+  height : 210px;
+  background-image : linear-gradient(to right, #58AEEA,#35CE93);
+  display:flex;
+  flex-direction:column;
+}
+.user-entry{
+  display :flex;
+   justify-content: flex-end;
+}
+.user-entry button{
+ color:white;
+  width : 110px;
+  height : 40px;
+  margin : 10px;
+  padding : 10px;
+  border-radius : 10px;
+  border-color:white;
+  border :1px solid white;
+  background : none;
+  font-size : 0.9em;
+  font-weight : 100;
+  margin-right : 10px;
+}
+
+.displaycontent h2,
+.displaycontent h3{
+  font-family: 'Helvetica Neue';
+  color:white;
+  font-weight : 100;
+  top: 20px;
+  margin : 0 auto;
+  text-align :center;
+}
+.modal-content {
+  font-family: 'Helvetica Neue';
+  text-align :center;
+}
+.modal-footer{
+  font-family: 'Helvetica Neue';
+  text-align :center;
+}
+#modal-button {
+  width: 20em;  height: 2em;
+}

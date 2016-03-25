@@ -26,7 +26,7 @@ body { background : white;}
     border-color: lightskyblue;
 
 }
-#fullnametext, #emailtext, #passwordtext{
+#fullnametext, #emailtext, #passwordtext,#birthday,#phone{
 	height:50px;
 	width: 500px;
 }
@@ -49,7 +49,7 @@ top: 0;
 
 left: 0;
 
-color: 69C0A7;
+color: #69C0A7;
 
 z-index: 7;
 
@@ -141,7 +141,7 @@ height: 22px;
 
 background: white;
 
-top: 39;
+top: 39px;
 
 left: 1050px;
 
@@ -311,7 +311,7 @@ height: 50px;
 
 background: green;
 
-top: 625;
+top: 625px;
 
 left: 700px;
 
@@ -419,7 +419,7 @@ font-size: 20px;
 
 color : blue;
 
-background-color:blue
+background-color:blue;
 
 font-family: verdana;
 
@@ -532,7 +532,7 @@ left: 0;
 
 color: Black;
 
-background :E4E5E9;
+background :#E4E5E9;
 
 z-index: 7;
 
@@ -577,6 +577,6 @@ a:link, a:visited {
 #navbar #holder li{
 	list-style: none;
 	margin:0;
-	padding =0;
+	padding:0;
 }
 

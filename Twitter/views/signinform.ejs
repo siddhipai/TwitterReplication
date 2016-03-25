@@ -13,11 +13,12 @@
 
     </head>	
   <body>
-  <div class="headerSignup"></div>
+  <div class="headerSignup">
+    <img src = "https://pbs.twimg.com/profile_images/707016644527149056/QNmQYGUk_normal.jpg" width="25" height="25" id="tweet" align="middle"></div>
   <form action = "/afterSignIn" method="post">
-  <div id = "signInDiv" style="border-size:20px;border-style:solid;border-width:thin;border-color:black;display:block;height:400px;width: 1000px">
-   
-  <h3>Log in to Twitter</h1>
+  <div id = "signInDiv" style="margin-left:200px;margin-top:100px;border-size:20px;border-style:solid;border-width:thin;border-color:grey;display:block;height:400px;width: 1000px">
+   <fieldset>
+  <h1>Log in to Twitter</h1>
  
   <input type = "email" placeholder="Email" name = "fullnameLogin" data-ng-model = "fullnameLogin" class="form-control input-lg" style="width:400px" required>
   <br/>
@@ -34,7 +35,9 @@
 	<div class="alert alert-danger" ng-hide="unexpected_error">
 	<strong>Unexpected error, try again</strong>
 	</div> -->
-  <input type="submit" value="Sign In" class="btn btn-lg" style="background-color:#3399ff","color:white"/>
+  <input type="submit" value="Sign In" class="btn btn-lg" style="background-color:#3399ff;color:white"/>
+
+     <a href="/signupform">Don't have an account? Sign up</a>
 	  </fieldset>
 
 </div>

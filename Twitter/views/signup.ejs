@@ -16,7 +16,10 @@
   
 
     <div id = "signupFieldsDiv" align = "center" data-ng-app="twitterSignUp" data-ng-controller="signUpController">
-    <div class="headerSignup"></div>
+
+
+
+    <div class="headerSignup">            <img src = "https://pbs.twimg.com/profile_images/707016644527149056/QNmQYGUk_normal.jpg" width="25" height="25" id="tweet" align="middle"></div>
     <h1>Join Twitter today</h1>
     <br/>
     <input type = "text" placeholder="Full Name" data-ng-model = "fullname" name = "user" id="fullnametext"/>
@@ -30,9 +33,15 @@
     <input type = "password" placeholder="password" data-ng-model = "password" name = "pass" id="passwordtext"/>
     <br/>
     <br/>
+        <input type = "text" placeholder="Birthday" data-ng-model = "birthday" name = "birthday" id="birthday"/>
+        <br/>
+        <br/>
+        <input type = "text" placeholder="Phone" data-ng-model = "phone" name = "phone" id="phone"/>
+        <br/>
+        <br/>
     
     <p>Tailor Twitter based on my recent website visits.<p><a href>Learn more.</a>
-    <input type="submit" data-ng-click="signup()" value="SIGN UP" class="btn btn-lg" style="height:50px","width: 500px","background-color: #3399ff","color:white"/>
+    <input type="submit" data-ng-click="signup()" value="SIGN UP" class="btn btn-lg" style="height:50px;width: 500px;background-color: #3399ff;color:white"/>
     </div>
     
     <script>

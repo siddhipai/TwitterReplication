@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:http="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+  <title>Profile</title>
+  <meta charset="UTF-8">
+  <%- include utils/commonfiles.ejs %>
+</head>
+<body  data-ng-app="twitterHomepage" data-ng-controller="followController">
+<%- include utils/header.ejs %>
+<div class="tweetfeed_parent">
+  <div class="flex_parent" >
+    <div class="flex_child">
+    <div class="col-md-12">
+      <div class="thumbnail">
+
+        <div class="caption" style="border-color: black;background-color: #3385ff">
+          <img src="./images/2O8A1010.JPG" class="img-rounded" width="70" height="70">
+
+        </div>
+        <h4 align="center" style="margin-top: -2em;margin-bottom: 6em;"><b> <%=session%></b></h4>
+        <p>
+          <a href="#" data-ng-click="showTweetList()">Tweets<span class="badge" >{{tweetCount}}</span></a>
+          <a href="#" data-ng-click="showFollowingList()">Following<span class="badge">{{followingCount}}</span></a>
+          <a href="#"  data-ng-click="showFollowerList()">Followers<span class="badge">{{followerCount}}</span></a>
+        </p>
+
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="thumbnail">
+        <h1 style="color:grey;">You are Following</h1>
+        <div class="caption">
+          <div data-ng-repeat="userInFollowing in following">
+
+                <h4 style="color:black;"><b>{{userInFollowing.followingTwitterHandle}}</b></h4><span>{{userInFollowing.datetime_value|date:'medium'}}</span>
+
+                <hr/>
+          </div>
+
+        </div>
+      </div>
+    </div>
+      </div>
+    <div class="col-md-6"  ng-hide="searchform.searcht.$dirty && searchfeed.length>0">
+      <div class="tweetbox">
+        <br/>
+          <textarea class="form-control" id="tweetspace" data-ng-model="textAreaTweet" placeholder="whats happenning?"></textarea>
+          <div class="tweet_buttons">
+
+            <button type="submit" value="Tweet" id="tweet" data-ng-click="tweet()" class="submit_tweet"> Tweet</button>
+          </div>
+
+      </div>
+
+      <div data-ng-repeat="tweet in tweetDescription.slice().reverse()"class="tweet_area">
+
+      <div class="tweet_content">
+        <div style="padding: 20px;">
+          <div class="retweet_from" ng-show="tweet.retweet_user" style="padding-left:5px;color:burlywood">
+            retweeted from {{tweet.retweet_user}}
+          </div>
+        <div class="tweettext" style="display: inline-flex;"><span><b>{{tweet.fullname}}</b></span> <span style="color:grey;">{{tweet.tweeter_handle}}</span> <span style="color:grey;">.{{tweet.datetime_value|date:'medium'}}</span>
+        </div>
+        <br/>
+        <div class="tweettext">{{tweet.tweettext}}
+          <button class="retweet" data-text="{{tweet.tweettext}}"data-owner="{{tweet.tweeter_handle}}" ng-click = "retweet($event)">
+            <span class="glyphicon glyphicon-refresh" data-text="{{tweet.tweettext}}"data-owner="{{tweet.tweeter_handle}}" aria-hidden="true"></span>
+          </button>
+
+          </div>
+
+          </div>
+      </div>
+    </div>
+    </div>
+      <div class="col-md-6" ng-show="searchform.searcht.$dirty && searchfeed.length>0">
+
+        <div ng-repeat="searchtweet in searchfeed | filter:searchtext" class="tweet_area">
+         <div class="tweet_content">
+           <div style="padding: 20px;">
+              <div class="tweettext"><span>{{searchtweet.tweettext}}</span>
+                <span style="color:grey;">.{{searchtweet.datetime_value |date:'medium'}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    <div class="col-md-3 ">
+      <div class="thumbnail">
+        <h1 style="color:grey;">Who To Follow</h1>
+        <h4>Suggestions:</h4>
+        <table data-ng-repeat="user in users">
+          <tr>
+            <td>
+              <h4 align="center" style="color:black;"><br/><br/>{{user.fullname}}<br/></h4>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button type="submit" data-ng-click="follow_handle(user.tweeter_handle,$event)" class="btn btn-primary">{{buttonText}}</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+</div>
+
+</div>
+
+
+
+<script src="controller/HomePageController.js"></script>
+</body>
+</html>
+
+
+
+
+	
